@@ -8,9 +8,14 @@ def partition(A, first, last):
     A[smaller], A[last] = A[last], A[smaller]
     return smaller
 
-def quickSort(A, p, r):
+def quickSort(A):
+    size = len(A) - 1
+    return _quickSort(A, 0, size)
+
+def _quickSort(A, p, r):
     if p < r :
-        q = partition(A, p, r - 1)
-        quickSort(A, p, q - 1)
-        quickSort(A, q + 1, r)
+        q = partition(A, p, r)
+        _quickSort(A, p, q - 1)
+        _quickSort(A, q + 1, r)
     return A    
+

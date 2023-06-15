@@ -13,11 +13,13 @@ def maxHeapify(A, i, size):
         A[largest], A[i] = A[i], A[largest]
         maxHeapify(A, largest ,size-1)
 
-def heapSort(A, size):
+def heapSort(A):
+    size = len(A)
     for i in range((size // 2) - 1, -1, -1):
         maxHeapify(A, i, size)
 
-    for i in range(size - 1, 0, -1):
+    for i in range(size -1, 0, -1):
         A[0], A[i] = A[i], A[0]
         maxHeapify(A, 0, i)
     return A
+

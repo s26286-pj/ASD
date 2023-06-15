@@ -2,9 +2,21 @@ from quickSort import quickSort;
 from heapSort import heapSort;
 from mergeSort import mergeSort;
 
-data = [1, 7, 4, 1, 10, 9, -2]
-size = len(data)
+import random
+import time
 
-print(quickSort(data.copy(), 0, size))
-print(heapSort(data.copy(), size ))
-print(mergeSort(data.copy()))
+def measureExecutionTime(callback):
+    startTime = time.time()
+    callback(data.copy())
+    endTime = time.time()
+    return endTime - startTime
+
+def generateRandomArray(size, startRange, endRange):
+    randomArray = [random.randint(startRange, endRange) for _ in range(size)]
+    return randomArray
+
+data = generateRandomArray(300000, -10000, 10000)
+print("Quicksort:", measureExecutionTime(quickSort), "seconds");
+print("HeapSort:", measureExecutionTime(heapSort), "seconds");
+print("MergeSort:", measureExecutionTime(mergeSort), "seconds");
+
